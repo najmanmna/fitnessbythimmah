@@ -1,6 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+// ✅ Import images
+import gymBg from "../assets/images/danielle-cerullo-CQfNt66ttZM-unsplash 1.png";
+import trainerImg from "../assets/images/Untitled design (12).png";
+
 const GymHeroSection = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#1E1E1E]">
@@ -12,7 +16,7 @@ const GymHeroSection = () => {
         transition={{ duration: 15, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
       >
         <img
-          src="src/assets/images/danielle-cerullo-CQfNt66ttZM-unsplash 1.png"
+          src={gymBg}
           alt="Gym Background"
           className="w-full h-full object-cover"
         />
@@ -26,7 +30,7 @@ const GymHeroSection = () => {
         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
       >
         <img
-          src="src/assets/images/Untitled design (12).png"
+          src={trainerImg}
           alt="Trainer"
           className="h-full object-contain"
         />
