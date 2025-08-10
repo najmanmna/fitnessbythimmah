@@ -37,11 +37,11 @@ const GymHeroSection = () => {
       </motion.div>
 
       {/* Text Content */}
-      <div className="relative z-10 text-center px-4 mt-32">
+      <div className="relative z-10 text-center px-4 mt-10 md:mt-32">
         <div className="relative inline-block">
           {/* GET FIT WITH */}
           <motion.h2
-            className="font-heading text-white text-4xl sm:text-4xl md:text-[7rem] font-bold tracking-wide drop-shadow-[2px_2px_6px_rgba(0,0,0,0.9)] -mb-5 md:-mb-8"
+            className="font-heading text-white text-5xl sm:text-4xl md:text-[7rem] font-bold tracking-wide drop-shadow-[2px_2px_6px_rgba(0,0,0,0.9)] -mb-5 md:-mb-8"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
