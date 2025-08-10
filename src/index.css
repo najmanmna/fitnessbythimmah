@@ -1,0 +1,12 @@
+@import "@fontsource/bebas-neue"; /* Heading font */
+@import "@fontsource/inter/400.css"; /* Normal text */
+@import "@fontsource/inter/700.css"; /* Bold text */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
