@@ -32,7 +32,7 @@ const GymHeroSection = () => {
         <img
           src={trainerImg}
           alt="Trainer"
-          className="h-full object-contain"
+          className="h-screen sm:h-full object-cover"
         />
       </motion.div>
 
@@ -41,7 +41,7 @@ const GymHeroSection = () => {
         <div className="relative inline-block">
           {/* GET FIT WITH */}
           <motion.h2
-            className="font-heading text-white text-3xl sm:text-4xl md:text-[7rem] font-bold tracking-wide drop-shadow-[2px_2px_6px_rgba(0,0,0,0.9)] -mb-8"
+            className="font-heading text-white text-4xl sm:text-4xl md:text-[7rem] font-bold tracking-wide drop-shadow-[2px_2px_6px_rgba(0,0,0,0.9)] -mb-5 md:-mb-8"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -51,7 +51,7 @@ const GymHeroSection = () => {
 
           {/* THIMMAH */}
           <motion.h1
-            className="font-oxanium text-[#ff2332] text-opacity-90 text-6xl sm:text-7xl md:text-[12rem] font-extrabold tracking-wide drop-shadow-[3px_3px_10px_rgba(0,0,0,0.95)]"
+            className="font-oxanium text-[#ff2332] text-opacity-90 text-7xl sm:text-7xl md:text-[12rem] font-extrabold tracking-wide drop-shadow-[3px_3px_10px_rgba(0,0,0,0.95)]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
@@ -72,7 +72,7 @@ const GymHeroSection = () => {
 
         {/* Buttons */}
         <motion.div
-          className="mt-6 flex flex-col sm:flex-row justify-center gap-4"
+          className="mt-6 flex flex-col sm:flex-row w-full px-10 max-w-sm sm:max-w-none justify-center gap-4"
           initial="hidden"
           animate="visible"
           variants={{
@@ -85,7 +85,7 @@ const GymHeroSection = () => {
         >
           <motion.a
             href="#join"
-            className="bg-red-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-red-700 transition text-sm sm:text-base"
+            className="bg-red-600 text-white font-semibold  px-10 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-red-700 transition text-sm sm:text-base"
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
           >
             JOIN NOW
