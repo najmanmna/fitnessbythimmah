@@ -13,7 +13,12 @@ const GymHeroSection = () => {
         className="absolute inset-0"
         initial={{ scale: 1 }}
         animate={{ scale: 1.1 }}
-        transition={{ duration: 15, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
+        transition={{
+          duration: 15,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
       >
         <img
           src={gymBg}
@@ -86,19 +91,27 @@ const GymHeroSection = () => {
           <motion.a
             href="#join"
             className="bg-red-600 text-white font-semibold  px-10 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-red-700 transition text-sm sm:text-base"
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
           >
             JOIN NOW
           </motion.a>
           <motion.a
             href="#programs"
             className="border border-white text-white font-semibold px-6 py-3 rounded-md hover:bg-white hover:text-black transition text-sm sm:text-base"
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
           >
             VIEW PROGRAMS
           </motion.a>
         </motion.div>
       </div>
+      {/* Bottom Blur Overlay */}
+      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#1E1E1E]/90 to-transparent backdrop-blur-sm z-20 pointer-events-none" />
     </section>
   );
 };
