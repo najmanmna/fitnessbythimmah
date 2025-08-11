@@ -1,25 +1,57 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { FaGraduationCap, FaMapMarkerAlt } from "react-icons/fa";
 import { GiVolleyballBall } from "react-icons/gi";
 import trainerImg from "../assets/images/aboutmeimg.png";
 
 const AboutMe = () => {
+  // Animation variants
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const fadeUpStagger = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut", delay: i * 0.2 },
+    }),
+  };
+
   return (
     <section className="bg-[#111] text-white py-16 px-4 md:px-12">
       <div className="max-w-6xl mx-auto">
         {/* Top Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left: Image */}
-          <div className="rounded-2xl overflow-hidden">
+          <motion.div
+            className="rounded-2xl overflow-hidden"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInLeft}
+          >
             <img
               src={trainerImg}
               alt="Trainer"
               className="w-full h-full object-cover"
             />
-          </div>
+          </motion.div>
 
           {/* Right: Text */}
-          <div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInRight}
+          >
             <h2 className="font-heading tracking-wide text-4xl md:text-5xl font-bold mb-4">
               ABOUT ME
             </h2>
@@ -34,44 +66,61 @@ const AboutMe = () => {
             </p>
 
             {/* Stats */}
-            <div className="flex gap-6 flex-wrap">
-              <div className="backdrop-blur-sm rounded-lg px-6 py-4 text-center shadow-lg">
-                <h3 className="text-3xl font-bold">150+</h3>
-                <p className="text-gray-400 text-sm">Satisfied Clients</p>
-              </div>
-              <div className="backdrop-blur-sm rounded-lg px-6 py-4 text-center shadow-lg">
-                <h3 className="text-3xl font-bold">3+</h3>
-                <p className="text-gray-400 text-sm">Years of Experience</p>
-              </div>
-              <div className="backdrop-blur-sm rounded-lg px-6 py-4 text-center shadow-lg">
-                <h3 className="text-3xl font-bold">2+</h3>
-                <p className="text-gray-400 text-sm">Years in Sport</p>
-              </div>
+            <div className="flex gap-6 flex-wrap flex-col md:flex-row justify-between">
+              {[
+                { number: "150+", label: "Satisfied Clients" },
+                { number: "3+", label: "Years of Experience" },
+                { number: "2+", label: "Years in Sport" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  className="backdrop-blur-sm rounded-lg px-6 py-4 text-center shadow-lg"
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUpStagger}
+                >
+                  <h3 className="text-3xl font-bold">{stat.number}</h3>
+                  <p className="text-gray-400 text-sm">{stat.label}</p>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Cards */}
         <div className="grid md:grid-cols-3 gap-6 mt-12">
-          <div className="bg-[#1F1F1F] rounded-lg p-6 text-center shadow-lg py-10">
-            <FaGraduationCap className="mx-auto text-4xl text-white mb-3" />
-            <h3 className="text-red-600 font-bold text-lg">
-              QUALIFIED TRAINER
-            </h3>
-            <p className="text-gray-400 text-sm">Certified & Experienced</p>
-          </div>
-
-          <div className="bg-[#1F1F1F] rounded-lg p-6 text-center shadow-lg py-10">
-            <GiVolleyballBall className="mx-auto text-4xl text-white mb-3" />
-            <h3 className="text-red-600 font-bold text-lg">S&amp;C TRAINER</h3>
-            <p className="text-gray-400 text-sm">@U.O.C Football</p>
-          </div>
-
-          <div className="bg-[#1F1F1F] rounded-lg p-6 text-center shadow-lg py-10">
-            <FaMapMarkerAlt className="mx-auto text-4xl text-white mb-3" />
-            <h3 className="text-red-600 font-bold text-lg">FIND ME AT</h3>
-            <p className="text-gray-400 text-sm">@Inleapyard</p>
-          </div>
+          {[
+            {
+              icon: <FaGraduationCap className="mx-auto text-4xl text-white mb-3" />,
+              title: "QUALIFIED TRAINER",
+              desc: "Certified & Experienced",
+            },
+            {
+              icon: <GiVolleyballBall className="mx-auto text-4xl text-white mb-3" />,
+              title: "S&C TRAINER",
+              desc: "@U.O.C Football",
+            },
+            {
+              icon: <FaMapMarkerAlt className="mx-auto text-4xl text-white mb-3" />,
+              title: "FIND ME AT",
+              desc: "@Inleapyard",
+            },
+          ].map((card, i) => (
+            <motion.div
+              key={i}
+              className="bg-[#1F1F1F] rounded-lg p-6 text-center shadow-lg py-10"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.2, ease: "easeOut" }}
+            >
+              {card.icon}
+              <h3 className="text-red-600 font-bold text-lg">{card.title}</h3>
+              <p className="text-gray-400 text-sm">{card.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
