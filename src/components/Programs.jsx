@@ -9,6 +9,7 @@ import {
   HeartPulse,
   Scale,
 } from "lucide-react";
+import tBg from "../assets/images/t-bg.avif";
 
 const programs = [
   { icon: <Users size={40} />, title: "1-on-1 Training" },
@@ -45,8 +46,13 @@ const cardVariants = {
 
 export default function TrainingProgramsHex() {
   return (
-    <section className="bg-[#111] py-16 px-4">
-      <div className="max-w-6xl mx-auto text-center">
+    <section
+      className="relative bg-cover bg-center h-full  py-16 px-4"
+      style={{ backgroundImage: `url(${tBg})` }}
+    >
+      {/* Black Overlay */}
+      <div className="absolute inset-0 bg-black/80"></div>
+      <div className=" relative max-w-6xl mx-auto text-center">
         <h2 className="font-heading text-white text-4xl md:text-5xl font-bold tracking-wide mb-12">
           TRAINING PROGRAMS
         </h2>
@@ -128,9 +134,9 @@ function HexagonCard({ icon, title, bounce }) {
             }
           : {}
       }
-      className="relative w-40 h-44 hexagon flex flex-col items-center justify-center 
-      bg-gradient-to-b from-[#1F1F1F] to-[#111] border border-red-500/50 
-      shadow-[0_0_20px_rgba(255,0,0,0.4)] hover:shadow-[0_0_35px_rgba(255,0,0,0.8)]"
+      className="relative w-36 h-44 hexagon flex flex-col items-center justify-center 
+      bg-gradient-to-b from-[#1F1F1F] to-[#1F1F1F] border border-red-500/50 
+      shadow-[0_0_10px_rgba(255,0,0,0.4)] hover:shadow-[0_0_15px_rgba(255,0,0,0.6)]"
     >
       <div className="text-red-500 mb-2">{icon}</div>
       <h3 className="text-white text-sm font-semibold px-2">{title}</h3>
