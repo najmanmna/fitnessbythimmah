@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
@@ -10,29 +10,17 @@ import testimonialImg3 from "../assets/images/testimonials/test3.jpg";
 const testimonials = [
   {
     name: "Aashiq",
-    text: `I’ve struggled with being overweight since I was a kid, and when I started training with Thimira at Leap Yard, I was 123 kg. After working a desk job for a year, I knew I needed serious help to make a change. Thimira has been incredibly supportive and knowledgeable from the start. He understands my body and lifestyle and pushes me in the best way possible. Thanks to his guidance, I’ve gone down to 110 kg, losing about 13kgs in 30days
-
-I couldn’t have achieved this without his encouragement and expertise. Thank you, Thimira!`,
+    text: `I’ve struggled with being overweight since I was a kid, and when I started training with Thimira at Leap Yard, I was 123 kg. After working a desk job for a year, I knew I needed serious help to make a change. Thimira has been incredibly supportive and knowledgeable from the start. He understands my body and lifestyle and pushes me in the best way possible. Thanks to his guidance, I’ve gone down to 110 kg, losing about 13kgs in 30days I couldn’t have achieved this without his encouragement and expertise. Thank you, Thimira!`,
     image: testimonialImg1,
   },
   {
     name: "",
-    text: `Coach Thimira's guidance has been
-instrumental in helping me get fit , stronger
-and achieve my goal of getting into better
-shape while losing some weight . His expert
-advice on proper techniques truly inspired me
-to push my self harder and go beyond what 1
-thought was possible. Coach Thimira has not
-only helped me transform my body but also my
-mindset towards fitness and health`,
+    text: `Coach Thimira's guidance has been instrumental in helping me get fit , stronger and achieve my goal of getting into better shape while losing some weight . His expert advice on proper techniques truly inspired me to push my self harder and go beyond what 1 thought was possible. Coach Thimira has not only helped me transform my body but also my mindset towards fitness and health`,
     image: testimonialImg2,
   },
   {
     name: "",
-    text: `Thimira is a fantastic trainer with great sense of humor so every session is filled with laugh and positive attitude which empower you to work out even harder. Very professional coaching and definitely will help you to achieve your fitness goals! I really enjoyed my training with Thimira.
-Over time I got stronger and more confident in my ability. I lost weight and felt great about myself after only in few months.
-I would highly recommend Thimira to anyone that is looking confidence in themselves to make a positive change to their health and fitness. `,
+    text: `Thimira is a fantastic trainer with great sense of humor so every session is filled with laugh and positive attitude which empower you to work out even harder. Very professional coaching and definitely will help you to achieve your fitness goals! I really enjoyed my training with Thimira. Over time I got stronger and more confident in my ability. I lost weight and felt great about myself after only in few months. I would highly recommend Thimira to anyone that is looking confidence in themselves to make a positive change to their health and fitness.`,
     image: testimonialImg3,
   },
 ];
@@ -45,14 +33,20 @@ export default function TestimonialCarousel() {
   const nextSlide = () =>
     setIndex(index === testimonials.length - 1 ? 0 : index + 1);
 
+  // Auto-slide every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000); // Change 5000 to desired interval in ms
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [index]);
+
   return (
     <section className="relative py-28 px-4 bg-[#111] overflow-hidden">
-      {/* Red Glow Background */}
       <div className="absolute inset-0 -z-1">
         <div className="absolute top-1/2 ml-10 left-1/3 w-[500px] h-[200px] -translate-x-1/2 -translate-y-1/2 bg-red-600 opacity-30 blur-[150px] rounded-full"></div>
       </div>
 
-      {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +57,6 @@ export default function TestimonialCarousel() {
         HEAR IT FROM THEM
       </motion.h2>
 
-      {/* Main Content */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +65,6 @@ export default function TestimonialCarousel() {
         className="max-w-5xl mx-3 md:mx-auto relative h-[600px] md:h-[400px]"
       >
         <div className="flex flex-col md:flex-row gap-8 justify-center h-full">
-          {/* Left - Quote */}
           <AnimatePresence mode="wait">
             <motion.div
               key={index + "-text"}
@@ -94,7 +86,6 @@ export default function TestimonialCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Right - Image */}
           <AnimatePresence mode="wait">
             <motion.div
               key={index + "-image"}
@@ -116,7 +107,6 @@ export default function TestimonialCarousel() {
           </AnimatePresence>
         </div>
 
-        {/* Navigation */}
         <button
           onClick={prevSlide}
           className="absolute -left-8 md:-left-16 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-red-600 transition-colors"
@@ -131,7 +121,6 @@ export default function TestimonialCarousel() {
         </button>
       </motion.div>
 
-      {/* Dots */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
