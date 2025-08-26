@@ -10,7 +10,7 @@ html {
   scroll-behavior: smooth;
 }
 
-body, html, .App {
+body, html, .App,#root {
   cursor: none; /* Hide default cursor */
   overflow-x: hidden; /* Prevent scrolling */
 }
