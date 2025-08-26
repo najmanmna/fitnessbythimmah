@@ -17,7 +17,6 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-icons": "^5.5.0",
-    "react-magic-cursor": "^0.1.9",
     "react-parallax-tilt": "^1.7.304"
   },
   "devDependencies": {
