@@ -3,16 +3,27 @@ import AboutMe from "./components/AboutMe";
 import TrainWithMe from "./components/CTA";
 import Footer from "./components/Footer";
 import GymHeroSection from "./components/Hero";
+import JoinNowEstimator from "./components/JoinNow";
 import TrainingPrograms from "./components/Programs";
 import WatchThimmah from "./components/Reels";
 import TestimonialCarousel from "./components/Testimonials";
 
+import React, { useRef, useState } from "react";
+
 function App() {
+  const programsRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
-      <GymHeroSection />
+      <GymHeroSection
+        onJoinNowClick={() => setShowModal(true)}
+        scrollToPrograms={() =>
+          programsRef.current.scrollIntoView({ behavior: "smooth" })
+        }
+      />
       <AboutMe />
-      <TrainingPrograms />
+      <TrainingPrograms refProp={programsRef} />
       <TestimonialCarousel />
       <WatchThimmah />
       <div className="relative overflow-hidden bg-gradient-to-r from-black to-[#1a1a1a]">
@@ -20,8 +31,9 @@ function App() {
         <div className="absolute right-[100px] bottom-56 w-[700px] h-[400px] bg-red-600 rounded-full blur-[300px] opacity-25 pointer-events-none "></div>
 
         {/* Sections */}
-        <TrainWithMe />
-        <Footer />
+        <TrainWithMe  onJoinNowClick={() => setShowModal(true)} />
+        <Footer refProp={programsRef} />
+        <JoinNowEstimator showModal={showModal} setShowModal={setShowModal} />
       </div>
     </>
   );

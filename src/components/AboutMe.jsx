@@ -3,17 +3,26 @@ import { motion } from "framer-motion";
 import { FaGraduationCap, FaMapMarkerAlt } from "react-icons/fa";
 import { GiVolleyballBall } from "react-icons/gi";
 import trainerImg from "../assets/images/aboutmeimg.png";
+import { link } from "framer-motion/client";
 
 const AboutMe = () => {
   // Animation variants
   const fadeInLeft = {
     hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   const fadeInRight = {
     hidden: { opacity: 0, x: 50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   const fadeUpStagger = {
@@ -26,7 +35,7 @@ const AboutMe = () => {
   };
 
   return (
-    <section className="bg-[#111] text-white py-16 px-4 md:px-12">
+    <section id="about" className="bg-[#111] text-white py-16 px-4 md:px-12">
       <div className="max-w-6xl mx-auto">
         {/* Top Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -93,19 +102,27 @@ const AboutMe = () => {
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           {[
             {
-              icon: <FaGraduationCap className="mx-auto text-4xl text-white mb-3" />,
+              icon: (
+                <FaGraduationCap className="mx-auto text-4xl text-white mb-3" />
+              ),
               title: "QUALIFIED TRAINER",
               desc: "Certified & Experienced",
             },
             {
-              icon: <GiVolleyballBall className="mx-auto text-4xl text-white mb-3" />,
+              icon: (
+                <GiVolleyballBall className="mx-auto text-4xl text-white mb-3" />
+              ),
               title: "S&C TRAINER",
               desc: "@U.O.C Football",
+              link: "https://www.instagram.com/uoc.football/?utm_source=ig_web_button_share_sheet",
             },
             {
-              icon: <FaMapMarkerAlt className="mx-auto text-4xl text-white mb-3" />,
+              icon: (
+                <FaMapMarkerAlt className="mx-auto text-4xl text-white mb-3" />
+              ),
               title: "FIND ME AT",
               desc: "@Inleapyard",
+              link: "https://www.instagram.com/inleapyard?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
             },
           ].map((card, i) => (
             <motion.div
@@ -118,7 +135,13 @@ const AboutMe = () => {
             >
               {card.icon}
               <h3 className="text-red-600 font-bold text-lg">{card.title}</h3>
-              <p className="text-gray-400 text-sm">{card.desc}</p>
+              <a
+                href={card.link}
+                target="_blank"
+                className="text-gray-400 text-sm   "
+              >
+                {card.desc}
+              </a>
             </motion.div>
           ))}
         </div>

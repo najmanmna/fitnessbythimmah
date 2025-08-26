@@ -1,7 +1,7 @@
 import React from "react";
 import trainerImg from "../assets/images/thimmah_cta.png"; // replace with your image path
 
-const TrainWithMe = () => {
+const TrainWithMe = ({onJoinNowClick}) => {
   return (
     <section className="relative bg-transparent flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-12 md:py-20 overflow-hidden">
       {/* Red Glow Effect */}
@@ -25,7 +25,7 @@ const TrainWithMe = () => {
           Feel free to contact me if you want to train with me.
         </p>
 
-        <button className="mt-6 bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-all">
+        <button  onClick={onJoinNowClick} className="mt-6 bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-all">
           Book Now
         </button>
       </div>

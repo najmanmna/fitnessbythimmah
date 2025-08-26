@@ -5,9 +5,12 @@ import { motion } from "framer-motion";
 import gymBg from "../assets/images/danielle-cerullo-CQfNt66ttZM-unsplash 1.png";
 import trainerImg from "../assets/images/Untitled design (12).png";
 
-const GymHeroSection = () => {
+const GymHeroSection = ({ scrollToPrograms, onJoinNowClick }) => {
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#1E1E1E]">
+    <section
+      id="home"
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#1E1E1E]"
+    >
       {/* Background Image with slow zoom */}
       <motion.div
         className="absolute inset-0"
@@ -90,6 +93,7 @@ const GymHeroSection = () => {
         >
           <motion.a
             href="#join"
+            onClick={onJoinNowClick}
             className="bg-red-600 text-white font-semibold  px-10 py-2 sm:px-6 sm:py-3 rounded-md hover:bg-red-700 transition text-sm sm:text-base"
             variants={{
               hidden: { opacity: 0, y: 20 },
@@ -100,7 +104,8 @@ const GymHeroSection = () => {
           </motion.a>
           <motion.a
             href="#programs"
-            className="border border-white text-white font-semibold px-6 py-3 rounded-md hover:bg-white hover:text-black transition text-sm sm:text-base"
+            onClick={scrollToPrograms}
+            className=" border border-white text-white font-semibold px-6 py-3 rounded-md hover:bg-white hover:text-black transition text-sm sm:text-base"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },

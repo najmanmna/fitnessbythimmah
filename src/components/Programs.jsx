@@ -44,9 +44,11 @@ const cardVariants = {
   },
 };
 
-export default function TrainingProgramsHex() {
+export default function TrainingProgramsHex({ refProp }) {
   return (
     <section
+      ref={refProp}
+      id="programs"
       className="relative bg-cover bg-center h-full  py-16 px-4"
       style={{ backgroundImage: `url(${tBg})` }}
     >
